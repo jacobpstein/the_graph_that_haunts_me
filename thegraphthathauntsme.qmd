@@ -35,7 +35,7 @@ format:
 :::
 
 ::: {#second-column}
-```{r, message=FALSE, warning = FALSE, fig.width=14, fig.height=8, out.width="100%"}
+```{r, message=FALSE, warning = FALSE, fig.width=14, fig.height=16, out.width="100%"}
 
 library(tidyverse)
 library(extrafont)
@@ -230,7 +230,8 @@ games |> filter(game_num<=41) |> select("First 41 games" = fg3pct) |>
   geom_smooth(method = "lm", color = "#5F9EA0") +
   stat_cor(method="pearson", family = "Gill Sans") +
   usaidplot::usaid_plot() +
-  theme(title = element_text(size = 20)) +
+  theme(title = element_text(size = 20)
+        ) +
   labs(title = "Three-point defense in the first half of the season is\nbasically uncorrelated with defense in the second half"
        , caption = "Data: NBA via pbpstats.com")
 
@@ -248,7 +249,7 @@ games |> filter(game_num<=41) |> select("First 41 games" = fg3pct) |>
 
 ::: {#second-column}
 
-```{r, echo = FALSE, message = FALSE, warning = FALSE, fig.width=14, fig.height=10, out.width="100%"}
+```{r, echo = FALSE, message = FALSE, warning = FALSE, fig.width=14, fig.height=14, out.width="100%"}
 
 library(cmdstanr)
 
@@ -306,7 +307,10 @@ results_cmdstan |>
     subtitle = "Posterior slope estimates over increasing lags",
     x = "Number of games back",
     y = "Posterior Mean Slope"
-  )
+  ) +
+  theme(axis.text.y = element_text(size = 24)
+        , axis.text.x = element_text(size = 24)
+        )
 
 ```
 
@@ -331,7 +335,7 @@ The key takeaway is that we are able to measure something that isn't particularl
 
 ::: {#second-column}
 
-```{r, message = FALSE, warning = FALSE, fig.width=14, fig.height=10, out.width="100%"}
+```{r, message = FALSE, warning = FALSE, fig.width=14, fig.height=14, out.width="100%"}
 shot_quality <- read_csv("shot_quality.csv") |> clean_names()
 
 
@@ -346,7 +350,9 @@ shot_quality |> group_by(season) |>
 
   usaidplot::usaid_plot() + 
     theme(panel.grid.major.x = element_blank()
-          , axis.text.x = element_text(angle = 30, hjust = 1)) +
+          , axis.text.x = element_text(angle = 30, hjust = 1)
+          , axis.text.y = element_text(size = 24)
+          ) +
     labs(x = "", y = "Corr. between two-point attempts and shot quality"
          , title = "Two is worth slightly more as teams adjust")
 
@@ -357,7 +363,7 @@ shot_quality |> group_by(season) |>
 :::
 
 
-## {background-image="court.jpeg"}{.r-fit-text}
+## {background-image="court.jpeg"}
 
 <br>
 
