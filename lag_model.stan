@@ -21,7 +21,7 @@ transformed parameters {
 }
 model {
   // Priors
-  alpha_bar ~ normal(0.36, 0.05);
+  alpha_bar ~ normal(0.36, 0.05); // this is basically the typical 3pt percentage 
   beta ~ normal(0, 1);
   sigma_alpha ~ exponential(1);
   sigma_y ~ exponential(1);
